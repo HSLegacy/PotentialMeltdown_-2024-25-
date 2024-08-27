@@ -13,91 +13,26 @@ public class MeepMeepTesting {
         MeepMeep meepMeep = new MeepMeep(625);
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(180), Math.toRadians(180), 14.75)
+                .setConstraints(54.044, 45, Math.toRadians(215.55007908148409), Math.toRadians(275), 12)
                 .setDimensions(17, 17)
-                .setStartPose(new Pose2d(-35, 60, Math.toRadians(-90)))
+                .setStartPose(new Pose2d(-60, -60, Math.toRadians(90)))
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-32, 65, Math.toRadians(90)))
-//-32,65 (90) //10,60, (90)
+                        drive.trajectorySequenceBuilder(new Pose2d(-60, -60, Math.toRadians(90)))
 
 
-
-                                // TOPLEFT -- Pose2d(-35, 60, Math.toRadians(90)
-                                // ID 1
-                                /*
-                                .back(15)
-                                .strafeLeft(10)
-                                .back(5)
-                                .forward(5)
-                                .strafeRight(10)
-                                .back(35)
-                                .strafeRight(90)
-                                 */
-
-                                // Id 2
-
-                                /*
-                                .back(30)
-                                .forward(10)
-                                .strafeLeft(15)
-                                .back(28)
-                                .strafeRight(90)
-                                 */
-
-                                //ID 3
-
-                                /*
-                                .back(25)
-                                .turn(Math.toRadians(90))
-                                .back(5)
-                                .forward(20)
-                                .strafeLeft(22)
-                                .back(100)
-                                 */
-
-                                //TopRight -- Pose2d(35, 60, Math.toRadians(90)
-
-                                // Id Left
-                                /*
-                                .back(27)
-                                .turn(Math.toRadians(-90))
-                                .back(5)
-                                .forward(5)
-                                .strafeLeft(27)
-                                .forward(37)
-
-                                 */
+                                .splineToConstantHeading(new Vector2d( -40,15), Math.toRadians(0))
+                                .splineToSplineHeading(new Pose2d(-10, -60, Math.toRadians(180)), Math.toRadians(-90))
+                                .lineToConstantHeading(new Vector2d(50, -15))
+                                .lineToConstantHeading(new Vector2d(60, 56))
+                                .splineToConstantHeading(new Vector2d(30, 35),Math.toRadians(-120))
+                                .splineToConstantHeading(new Vector2d(13,57), Math.toRadians(0))
+                                .lineToConstantHeading(new Vector2d(-53, 57))
+                                .splineToConstantHeading(new Vector2d(-63, 39),Math.toRadians(-120))
 
 
 
 
-                                //ID Middle
-                                /*
-                                .back(30)
-                                .forward(27)
-                                .strafeRight(40)
 
-                                 */
-
-                                // ID Right
-                                /*
-                                .back(10)
-                                .strafeRight(10)
-                                .back(10)
-                                .forward(20)
-                                .strafeRight(30)
-
-                                 */
-
-                                //Right(MeepMeep) Parking BlueRight (Actual)
-
-
-                                .lineToLinearHeading(new Pose2d(-36, 30, Math.toRadians(0)))
-                                .splineToConstantHeading(new Vector2d(-36, 12), Math.toRadians(0))
-                                .lineToLinearHeading(new Pose2d(35, 12, Math.toRadians(0)))
-                                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(0)))
-                                .lineToLinearHeading(new Pose2d(45, 10, Math.toRadians(0)))
-                                .lineToLinearHeading(new Pose2d(55, 10, Math.toRadians(0)))
 
 
 

@@ -31,6 +31,7 @@
 
 package org.firstinspires.ftc.teamcode.drive.opmode.Auto;
 
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -169,10 +170,10 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
 
         //---------------------Left Trajectories-----------------
 
+        Pose2d startPose = new Pose2d(-60, -60, Math.toRadians(90));
 
-
-        Trajectory left_traj1 = drive.trajectoryBuilder(new Pose2d())
-                .forward(28)
+        Trajectory left_traj1 = drive.trajectoryBuilder(startPose)
+                .splineToConstantHeading(new Vector2d(-40, 15), Math.toRadians(0))
                 .build();
         TrajectorySequence left_trajTurn1 = drive.trajectorySequenceBuilder(left_traj1.end())
                 .turn(Math.toRadians(93))
@@ -270,8 +271,8 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
                 .build();
 
         // -------------------- Right Trajectories -----------
-        Trajectory right_traj1 = drive.trajectoryBuilder(new Pose2d())
-                .strafeRight(10)
+        Trajectory right_traj1 = drive.trajectoryBuilder(new Pose2d(-60, -60, Math.toRadians(90)))
+                .splineToConstantHeading(new Vector2d( -40,15), Math.toRadians(0))
                 .build();
         /*TrajectorySequence right_trajTurn1 = drive.trajectorySequenceBuilder(right_traj1.end())
                 .turn(Math.toRadians(-90))
@@ -393,7 +394,7 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
                     drive.followTrajectory(right_traj1);
                     //drive.followTrajectorySequence(right_trajTurn);
                     //drive.followTrajectorySequence(right_trajTurn1);
-                    drive.followTrajectory(right_traj2);
+                    /*drive.followTrajectory(right_traj2);
                     //drive.followTrajectorySequence(right_trajTurn2);
                     drive.followTrajectory(right_traj3);
                     //drive.followTrajectorySequence(right_trajTurn3);
@@ -409,7 +410,7 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
                     armDown(1350);
                     smallDown(1040);
                     drive.followTrajectory(right_traj9);
-                    //armpose(-4);
+                    //armpose(-4);*/
 
 
 

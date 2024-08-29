@@ -159,13 +159,12 @@ public class RRMaze extends LinearOpMode {
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         Pose2d startPose = new Pose2d(-60, -60, Math.toRadians(90));
-
+        drive.setPoseEstimate(startPose);
         Trajectory mazeTraj = drive.trajectoryBuilder(startPose)
-                .forward(12)
-                //.splineToConstantHeading(new Vector2d(-40, 15), Math.toRadians(0))
-                /*
+                .splineToConstantHeading(new Vector2d(-40, 15), Math.toRadians(0))
                 .splineToSplineHeading(new Pose2d(-10, -60, Math.toRadians(180)), Math.toRadians(-90))
                 .lineToConstantHeading(new Vector2d(50, -15))
+                /*
                 .lineToConstantHeading(new Vector2d(60, 56))
                 .splineToConstantHeading(new Vector2d(30, 35), Math.toRadians(-120))
                 .splineToConstantHeading(new Vector2d(13, 57), Math.toRadians(0))

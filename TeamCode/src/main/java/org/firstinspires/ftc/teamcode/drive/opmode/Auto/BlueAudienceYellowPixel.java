@@ -172,8 +172,8 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
 
         Pose2d startPose = new Pose2d(-60, -60, Math.toRadians(90));
 
-        Trajectory left_traj1 = drive.trajectoryBuilder(startPose)
-                .splineToConstantHeading(new Vector2d(-40, 15), Math.toRadians(0))
+        Trajectory left_traj1 = drive.trajectoryBuilder(new Pose2d(0,0, Math.toRadians(90)))
+                .splineToConstantHeading(new Vector2d(100,100), Math.toRadians(0))
                 .build();
         TrajectorySequence left_trajTurn1 = drive.trajectorySequenceBuilder(left_traj1.end())
                 .turn(Math.toRadians(93))
@@ -271,7 +271,9 @@ public class BlueAudienceYellowPixel extends LinearOpMode {
                 .build();
 
         // -------------------- Right Trajectories -----------
-        Trajectory right_traj1 = drive.trajectoryBuilder(new Pose2d(-60, -60, Math.toRadians(90)))
+        drive.setPoseEstimate(new Pose2d(-60, -60, Math.toRadians(90)));
+
+        Trajectory right_traj1 = drive.trajectoryBuilder(startPose)
                 .splineToConstantHeading(new Vector2d( -40,15), Math.toRadians(0))
                 .build();
         /*TrajectorySequence right_trajTurn1 = drive.trajectorySequenceBuilder(right_traj1.end())

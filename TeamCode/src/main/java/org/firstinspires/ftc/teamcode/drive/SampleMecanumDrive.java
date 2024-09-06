@@ -57,7 +57,7 @@ import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kV;
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
     // kD makes robo jerky DO NOT TOUCH
-    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(7, 0,1 );
+    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(10, 0,1 );
     public static PIDCoefficients HEADING_PID = new PIDCoefficients(11, 0, 1);
 
     public static double LATERAL_MULTIPLIER = 1.681;

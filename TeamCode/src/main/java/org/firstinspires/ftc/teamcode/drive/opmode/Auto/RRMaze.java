@@ -158,9 +158,38 @@ public class RRMaze extends LinearOpMode {
 
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
+
         Pose2d startPose = new Pose2d(-60, -60, Math.toRadians(90));
         drive.setPoseEstimate(startPose);
-        Trajectory mazeTraj = drive.trajectoryBuilder(startPose)
+
+        Trajectory left_traj1 = drive.trajectoryBuilder(startPose)
+                .splineTo(new Vector2d(-40, 15), Math.toRadians(0))
+                .build();
+        Trajectory left_trajTurn1 = drive.trajectoryBuilder(left_traj1.end())
+                .splineToConstantHeading(new Vector2d(-10, -60), Math.toRadians(-90))
+                .build();
+        Trajectory left_traj2 = drive.trajectoryBuilder(left_trajTurn1.end())
+                .lineToConstantHeading(new Vector2d(50, -15))
+                .build();
+        Trajectory left_traj3 = drive.trajectoryBuilder(left_traj2.end())
+                .lineToConstantHeading(new Vector2d(60, 56))
+                .build();
+        Trajectory left_traj4 = drive.trajectoryBuilder(left_traj3.end())
+                .splineToConstantHeading(new Vector2d(30, 35), Math.toRadians(-120))
+                .build();
+        Trajectory left_traj5 = drive.trajectoryBuilder(left_traj4.end())
+                .splineToConstantHeading(new Vector2d(13, 57), Math.toRadians(0))
+                .build();
+        Trajectory left_traj6 = drive.trajectoryBuilder(left_traj5.end())
+                .lineToConstantHeading(new Vector2d(-53, 57))
+                .build();
+        Trajectory left_traj7 = drive.trajectoryBuilder(left_traj6.end())
+                .splineToConstantHeading(new Vector2d(-63, 39), Math.toRadians(-120))
+                .build();
+
+
+        /*Trajectory mazeTraj = drive.trajectoryBuilder(startPose)
                 .splineToConstantHeading(new Vector2d(-40, 15), Math.toRadians(0))
                 .splineToSplineHeading(new Pose2d(-10, -60, Math.toRadians(180)), Math.toRadians(-90))
                 .lineToConstantHeading(new Vector2d(50, -15))
@@ -171,12 +200,21 @@ public class RRMaze extends LinearOpMode {
                 .lineToConstantHeading(new Vector2d(-53, 57))
                 .splineToConstantHeading(new Vector2d(-63, 39), Math.toRadians(-120))
 
-                 */
-                .build();
 
+                .build();
+                */
         if(opModeIsActive()) {
 
-            drive.followTrajectory(mazeTraj);
+            drive.followTrajectory(left_traj1);
+            drive.followTrajectory(left_trajTurn1);
+            /*
+            drive.followTrajectory(left_traj2);
+            drive.followTrajectory(left_traj3); 
+            drive.followTrajectory(left_traj4);
+            drive.followTrajectory(left_traj5);
+            drive.followTrajectory(left_traj6);
+            drive.followTrajectory(left_traj7);
+            */
         }
 
 
